@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/petition.dart';
+import 'package:social_justice_hackathon/polls.dart';
+import 'package:social_justice_hackathon/profile.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -23,38 +26,140 @@ class FigmaToCodeApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class  _MyHomePageState extends State<Home> {
+   int _currentIndex = 0; // Track the current index of the BottomNavigationBar
+
+  // List of pages for navigation
+  final List<Widget> _pages = [
+    Home(),
+    Petitions(),
+    Profile(),
+    Polls(),
+  ];
+
+  void _onItemTapped(BuildContext context, int index) {
+    Widget page;
+
+    // Select the appropriate page based on index
+    switch (index) {
+      case 0:
+        page = Home();
+        break;
+      case 1:
+        page = Petitions();
+        break;
+      case 2:
+        page = Profile();
+        break;
+      case 3:
+        page = Polls();
+        break;
+      default:
+        page = Home();
+    }
+
+    // Navigate to the selected page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Engagement',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
+      backgroundColor: const Color.fromARGB(255, 241, 48, 35),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+        Text(
+          'Engagement',
+          style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w700,
+          ),
         ),
+        ],
       ),
-      body: Column(
+      flexibleSpace: Stack(
+        children: [
+          Positioned(
+                left: 300,
+                top: 35,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: ShapeDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage("https://via.placeholder.com/82x82"),
+                      fit: BoxFit.fill,
+                    ),
+                    shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              
+        ],
+      ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
-          width: 360,
+          width: 380,
           height: 831,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Colors.white),
           child: Stack(
             children: [
               Positioned(
+                left: 12,
+                top: 10,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 251,
+                      height: 52,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFFECECEC),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 27, // Adjusted left position to center the text in the container
+                      top: 20,  // Adjusted top position for better alignment
+                      child: SizedBox(
+                        width: 247,
+                        height: 50,
+                        child: Text(
+                          'Search Engagements',
+                          style: TextStyle(
+                            color: Color(0xFF888888),
+                            fontSize: 10,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w700,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              Positioned(
                 left: 15,
-                top: 192,
+                top: 70,
                 child: Container(
                   width: 328,
                   height: 457,
@@ -66,27 +171,11 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: -1,
-                top: 776,
-                child: Container(
-                  width: 360,
-                  height: 55,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
-                  width: 360,
-                  height: 82,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
+              
+              
               Positioned(
                 left: 15,
-                top: 190,
+                top: 70,
                 child: Container(
                   width: 326,
                   height: 351,
@@ -102,20 +191,13 @@ class Home extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 30,
-                top: 601,
-                child: Container(
-                  width: 129,
-                  height: 30,
-                  decoration: BoxDecoration(color: Colors.white),
-                ),
-              ),
-              Positioned(
-                left: 54,
-                top: 611,
-                child: SizedBox(
-                  width: 81,
-                  height: 11,
+              left: 30,
+              top: 465,
+              child: Container(
+                width: 129,
+                height: 30,
+                decoration: BoxDecoration(color: Colors.white),
+                child: Center( // Centering the text within the container
                   child: Text(
                     'Share Your View',
                     textAlign: TextAlign.center,
@@ -129,160 +211,42 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              
-              Positioned(
-                left: 38,
-                top: 789,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
+            ),
+
+            Positioned(
+              left: 300,
+              top: 750,
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFF93636),
+                  shape: OvalBorder(),
+                ),
+                child: ClipOval( // Ensure the image fits within the oval shape
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/icons/add.png"),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 38,
-                top: 789,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 38,
-                top: 789,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 38,
-                top: 789,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 255,
-                top: 0,
-                child: Container(
-                  width: 82,
-                  height: 82,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 246,
-                top: 676,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF93636),
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 246,
-                top: 676,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/100x100"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
+            ),
+
               Positioned(
                 left: 28,
-                top: 560,
+                top: 430,
                 child: SizedBox(
                   width: 211,
                   height: 30,
                   child: Text(
-                    'What Does the Government Thinkh Of Us!!',
+                    'What Does the Government Think Of Us!!',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 255,
-                top: 0,
-                child: Container(
-                  width: 82,
-                  height: 82,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/82x82"),
-                      fit: BoxFit.fill,
-                    ),
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
-              
-              Positioned(
-                left: 12,
-                top: 110,
-                child: Container(
-                  width: 251,
-                  height: 52,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFECECEC),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 39,
-                top: 112,
-                child: SizedBox(
-                  width: 247,
-                  height: 50,
-                  child: Text(
-                    'Search Engagements',
-                    style: TextStyle(
-                      color: Color(0xFF888888),
-                      fontSize: 10,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w700,
                       height: 0,
@@ -295,6 +259,8 @@ class Home extends StatelessWidget {
         ),
       ],
     ),
+      ),
+      
     bottomNavigationBar: BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
@@ -314,11 +280,11 @@ class Home extends StatelessWidget {
         label: 'Polls',
       ),
       ],
-      currentIndex: 0,
+      currentIndex: _currentIndex,
       selectedItemColor: Colors.red,
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor: const Color.fromARGB(255, 254, 254, 254),
       onTap: (index) {
-      // Handle navigation tap
+        _onItemTapped(context, index); 
       },
     ),
     );

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/home.dart';
+import 'package:social_justice_hackathon/petition.dart';
+import 'package:social_justice_hackathon/polls.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -23,14 +26,58 @@ class FigmaToCodeApp extends StatelessWidget {
   }
 }
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  _MyprofileState createState() => _MyprofileState();
+}
+
+class _MyprofileState extends State<Profile>{
+   int _currentIndex = 0; // Track the current index of the BottomNavigationBar
+
+  // List of pages for navigation
+  final List<Widget> _pages = [
+    Home(),
+    Petitions(),
+    Profile(),
+    Polls(),
+  ];
+
+ void _onItemTapped(BuildContext context, int index) {
+    Widget page;
+
+    // Select the appropriate page based on index
+    switch (index) {
+      case 0:
+        page = Home();
+        break;
+      case 1:
+        page = Petitions();
+        break;
+      case 2:
+        page = Profile();
+        break;
+      case 3:
+        page = Polls();
+        break;
+      default:
+        page = Home();
+    }
+
+    // Navigate to the selected page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
           width: 360,
@@ -48,48 +95,7 @@ class Profile extends StatelessWidget {
                   decoration: BoxDecoration(color: Color(0xFFF93636)),
                 ),
               ),
-              Positioned(
-                left: 124,
-                top: 756,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 41,
-                top: 759,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 210,
-                top: 759,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
+              
               Positioned(
                 left: 41,
                 top: 294,
@@ -287,6 +293,8 @@ class Profile extends StatelessWidget {
         ),
       ],
     ),
+      ),
+      
     bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -306,11 +314,12 @@ class Profile extends StatelessWidget {
             label: 'Polls',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: 2,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           // Handle navigation tap
+          _onItemTapped(context, index); 
         },
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/home.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -30,7 +31,7 @@ class Login extends StatelessWidget {
       body: Column(
       children: [
         Container(
-          width: 360,
+          width: 380,
           height: 800,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Colors.white),
@@ -117,39 +118,42 @@ class Login extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 75,
-                top: 653,
-                child: Container(
-                  width: 246,
-                  height: 30,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF93636),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 76,
-                top: 655,
-                child: SizedBox(
-                  width: 245,
-                  height: 28,
-                  child: Text(
-                    'Login',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
+                Positioned(
+  left: 75,
+  top: 653,
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Home()), // Make sure to import the Home widget
+      );
+    },
+    child: Container(
+      width: 246,
+      height: 30,
+      decoration: ShapeDecoration(
+        color: Color(0xFFF93636),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          'Login',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+            height: 0,
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+
               Positioned(
                 left: 53,
                 top: 525,

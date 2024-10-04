@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/home.dart';
+import 'package:social_justice_hackathon/petition.dart';
+import 'package:social_justice_hackathon/profile.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -23,12 +26,57 @@ class FigmaToCodeApp extends StatelessWidget {
   }
 }
 
-class Polls extends StatelessWidget {
+class Polls extends StatefulWidget {
+  @override
+  _MypollsState createState() => _MypollsState();
+}
+
+
+class _MypollsState extends State<Polls>{
+   int _currentIndex = 0; // Track the current index of the BottomNavigationBar
+
+  // List of pages for navigation
+  final List<Widget> _pages = [
+    Home(),
+    Petitions(),
+    Profile(),
+    Polls(),
+  ];
+
+  void _onItemTapped(BuildContext context, int index) {
+    Widget page;
+
+    // Select the appropriate page based on index
+    switch (index) {
+      case 0:
+        page = Home();
+        break;
+      case 1:
+        page = Petitions();
+        break;
+      case 2:
+        page = Profile();
+        break;
+      case 3:
+        page = Polls();
+        break;
+      default:
+        page = Home();
+    }
+
+    // Navigate to the selected page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
       children: [
         Container(
           width: 360,
@@ -389,6 +437,7 @@ class Polls extends StatelessWidget {
         ),
       ],
     ),
+      ),
     bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -408,11 +457,12 @@ class Polls extends StatelessWidget {
             label: 'Polls',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: 3,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           // Handle navigation tap
+          _onItemTapped(context, index); 
         },
       ),
     );

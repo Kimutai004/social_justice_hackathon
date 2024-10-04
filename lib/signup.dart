@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/login.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -30,7 +31,7 @@ class Register extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            width: 360,
+            width: 380,
             height: 800,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(color: Colors.white),
@@ -55,34 +56,7 @@ class Register extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 41,
-                  top: 493,
-                  child: Container(
-                    width: 269,
-                    height: 39,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFD9D9D9),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 41,
-                  top: 572,
-                  child: Container(
-                    width: 269,
-                    height: 40,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFD9D9D9),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
+                
                 Positioned(
                   left: 45,
                   top: 728,
@@ -119,36 +93,77 @@ class Register extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 65,
-                  top: 645,
-                  child: Container(
-                    width: 246,
-                    height: 41,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFF93636),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
+  left: 65,
+  top: 645,
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()), // Make sure to import the Login widget
+      );
+    },
+    child: Container(
+      width: 246,
+      height: 41,
+      decoration: ShapeDecoration(
+        color: Color(0xFFF93636),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          'Login',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Inter',
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+
+                
                 Positioned(
-                  left: 66,
-                  top: 647,
+                  left: 47,
+                  top: 389,
                   child: SizedBox(
-                    width: 245,
-                    height: 39,
+                    width: 45,
+                    height: 12,
                     child: Text(
-                      'Login',
+                      'Email *:',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                        color: Colors.black,
+                        fontSize: 12,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w700,
                         height: 0,
                       ),
                     ),
+                  ),
+                ),
+                Positioned(
+                  left: 45,
+                  top: 415,
+                  child: Container(
+                  width: 269,
+                  height: 40,
+                  child: TextField(
+                    decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFFD9D9D9),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: 'Email',
+                    ),
+                  ),
                   ),
                 ),
                 Positioned(
@@ -171,6 +186,26 @@ class Register extends StatelessWidget {
                   ),
                 ),
                 Positioned(
+                  left: 41,
+                  top: 493,
+                  child: Container(
+                  width: 269,
+                  height: 39,
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFFD9D9D9),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: 'Password',
+                    ),
+                  ),
+                  ),
+                ),
+                Positioned(
                   left: 36,
                   top: 546,
                   child: SizedBox(
@@ -190,6 +225,27 @@ class Register extends StatelessWidget {
                   ),
                 ),
                 Positioned(
+                  left: 41,
+                  top: 572,
+                  child: Container(
+                  width: 269,
+                  height: 39,
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFFD9D9D9),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: 'Confirm Password',
+                    ),
+                  ),
+                  ),
+                ),
+                
+                Positioned(
                   left: 259,
                   top: 580,
                   child: Container(
@@ -198,7 +254,7 @@ class Register extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image:
-                            NetworkImage("https://via.placeholder.com/30x24"),
+                            AssetImage("assets/icons/Lock.png"),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -213,45 +269,14 @@ class Register extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image:
-                            NetworkImage("https://via.placeholder.com/30x24"),
+                            AssetImage("assets/icons/Lock.png"),
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 45,
-                  top: 415,
-                  child: Container(
-                    width: 269,
-                    height: 40,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFD9D9D9),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 47,
-                  top: 389,
-                  child: SizedBox(
-                    width: 45,
-                    height: 12,
-                    child: Text(
-                      'Email *:',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
-                  ),
-                ),
+                
+                
                 Positioned(
                   left: 263,
                   top: 423,
@@ -261,7 +286,7 @@ class Register extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image:
-                            NetworkImage("https://via.placeholder.com/30x24"),
+                            AssetImage("assets/icons/Mail.png"),
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -293,3 +318,9 @@ class Register extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
