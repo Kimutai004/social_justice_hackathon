@@ -152,6 +152,28 @@ class _MyPetitionsState extends State<Petitions>{
           ),
         ),
       ),
+      Positioned(
+              left: 300,
+              top: 750,
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: ShapeDecoration(
+                  color: Color(0xFFF93636),
+                  shape: OvalBorder(),
+                ),
+                child: ClipOval( // Ensure the image fits within the oval shape
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/icons/add.png"),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
     ],
   ),
 )

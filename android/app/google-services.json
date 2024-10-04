@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "567303813074",
+    "project_id": "socialjustice-88dbd",
+    "storage_bucket": "socialjustice-88dbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567303813074:android:2e6e21a1c7d9efec763a0b",
+        "android_client_info": {
+          "package_name": "com.example.social_justice_hackathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtqdjn0k61YRm7dOdIa30uwNib4gwTD-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
