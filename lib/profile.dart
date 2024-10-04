@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:social_justice_hackathon/home.dart';
 import 'package:social_justice_hackathon/petition.dart';
 import 'package:social_justice_hackathon/polls.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -31,8 +33,9 @@ class Profile extends StatefulWidget {
   _MyprofileState createState() => _MyprofileState();
 }
 
-class _MyprofileState extends State<Profile>{
-   int _currentIndex = 0; // Track the current index of the BottomNavigationBar
+class _MyprofileState extends State<Profile> {
+  int _currentIndex = 0; // Track the current index of the BottomNavigationBar
+   File? _profileImage; // Declare the profile image variable
 
   // List of pages for navigation
   final List<Widget> _pages = [
@@ -42,7 +45,7 @@ class _MyprofileState extends State<Profile>{
     Polls(),
   ];
 
- void _onItemTapped(BuildContext context, int index) {
+  void _onItemTapped(BuildContext context, int index) {
     Widget page;
 
     // Select the appropriate page based on index
@@ -78,224 +81,241 @@ class _MyprofileState extends State<Profile>{
       ),
       body: SingleChildScrollView(
         child: Column(
-      children: [
-        Container(
-          width: 360,
-          height: 800,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 0,
-                top: 745,
-                child: Container(
-                  width: 360,
-                  height: 55,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
-              
-              Positioned(
-                left: 41,
-                top: 294,
-                child: Container(
-                  width: 269,
-                  height: 40,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+          children: [
+            Container(
+              width: 380,
+              height: 800,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 108,
+                    top: 20,
+                    child: GestureDetector(
+                      onTap: () async {
+                        final ImagePicker _picker = ImagePicker();
+                        final XFile? image = await _picker.pickImage(
+                            source: ImageSource.gallery);
+                        if (image != null) {
+                          setState(() {
+                            _profileImage = File(image.path);
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: 144,
+                        height: 144,
+                        decoration: ShapeDecoration(
+                          image: DecorationImage(
+                            image: _profileImage != null
+                                ? FileImage(_profileImage!)
+                                : NetworkImage(
+                                        "https://via.placeholder.com/144x144")
+                                    as ImageProvider,
+                            fit: BoxFit.fill,
+                          ),
+                          shape: OvalBorder(),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 41,
-                top: 380,
-                child: Container(
-                  width: 269,
-                  height: 40,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  Positioned(
+                    left: 132,
+                    top: 170,
+                    child: Text(
+                      'Update Profile Image',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 24,
-                top: 258,
-                child: Text(
-                  'First Name',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 25,
-                top: 349,
-                child: Text(
-                  'Last Name',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 41,
-                top: 470,
-                child: Container(
-                  width: 269,
-                  height: 40,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  Positioned(
+                    left: 24,
+                    top: 248,
+                    child: Text(
+                      'First Name',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 41,
-                top: 556,
-                child: Container(
-                  width: 269,
-                  height: 40,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  Positioned(
+                    left: 41,
+                    top: 270,
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFD9D9D9),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 15,
-                top: 434,
-                child: Text(
-                  'Contact Email',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 27,
-                top: 525,
-                child: Text(
-                  'Birth Date',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 104,
-                top: 48,
-                child: Container(
-                  width: 144,
-                  height: 144,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 57,
-                top: 640,
-                child: Container(
-                  width: 245,
-                  height: 61,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF93636),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  Positioned(
+                    left: 25,
+                    top: 349,
+                    child: Text(
+                      'Last Name',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 61,
-                top: 646,
-                child: SizedBox(
-                  width: 241,
-                  height: 55,
-                  child: Text(
-                    'Apply Changes',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
+                  Positioned(
+                    left: 41,
+                    top: 370,
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFD9D9D9),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                left: 102,
-                top: 221,
-                child: Text(
-                  'Update Profile Image',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              
-              Positioned(
-                left: 108,
-                top: 48,
-                child: Container(
-                  width: 144,
-                  height: 144,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/144x144"),
-                      fit: BoxFit.fill,
+                  Positioned(
+                    left: 15,
+                    top: 440,
+                    child: Text(
+                      'Contact Email',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
                     ),
-                    shape: OvalBorder(),
                   ),
-                ),
+                  Positioned(
+                    left: 41,
+                    top: 460,
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFD9D9D9),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 27,
+                    top: 530,
+                    child: Text(
+                      'Birth Date',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 41,
+                    top: 550,
+                    child: Container(
+                      width: 300,
+                      height: 60,
+                      child: DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xFFD9D9D9),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        items: List.generate(100, (index) {
+                          int year = DateTime.now().year - index;
+                          return DropdownMenuItem(
+                            value: year.toString(),
+                            child: Text(year.toString()),
+                          );
+                        }),
+                        onChanged: (value) {
+                          // Handle year selection
+                        },
+                        hint: Text('Select Year'),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 57,
+                    top: 640,
+                    child: Container(
+                      width: 245,
+                      height: 50,
+                      decoration: ShapeDecoration(
+                        color: Color(0xFFF93636),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Center(
+                        child: SizedBox(
+                          width: 241,
+                          height: 55,
+                          child: Text(
+                            'Apply Changes',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w700,
+                              height: 1.5, // Adjusted height for better spacing
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    ),
       ),
-      
-    bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -319,7 +339,7 @@ class _MyprofileState extends State<Profile>{
         unselectedItemColor: Colors.grey,
         onTap: (index) {
           // Handle navigation tap
-          _onItemTapped(context, index); 
+          _onItemTapped(context, index);
         },
       ),
     );
