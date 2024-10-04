@@ -74,48 +74,23 @@ class _MypollsState extends State<Polls>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Polls'),
+        backgroundColor: Colors.red,
+      ),
       body: SingleChildScrollView(
         child: Column(
       children: [
         Container(
-          width: 360,
+          width: 380,
           height: 831,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Colors.white),
           child: Stack(
             children: [
               Positioned(
-                left: 0,
-                top: 0,
-                child: Container(
-                  width: 360,
-                  height: 82,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
-              Positioned(
-                left: 4,
-                top: 12,
-                child: SizedBox(
-                  width: 178,
-                  height: 53,
-                  child: Text(
-                    'Polls',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
                 left: 31,
-                top: 125,
+                top: 20,
                 child: Container(
                   width: 284,
                   height: 255,
@@ -129,7 +104,7 @@ class _MypollsState extends State<Polls>{
               ),
               Positioned(
                 left: 31,
-                top: 161,
+                top: 56,
                 child: SizedBox(
                   width: 285,
                   child: Text(
@@ -147,7 +122,7 @@ class _MypollsState extends State<Polls>{
               ),
               Positioned(
                 left: 84,
-                top: 199,
+                top: 94,
                 child: Text(
                   'Yes',
                   textAlign: TextAlign.center,
@@ -162,7 +137,7 @@ class _MypollsState extends State<Polls>{
               ),
               Positioned(
                 left: 86,
-                top: 237,
+                top: 132,
                 child: Text(
                   'No',
                   textAlign: TextAlign.center,
@@ -177,7 +152,7 @@ class _MypollsState extends State<Polls>{
               ),
               Positioned(
                 left: 53,
-                top: 195,
+                top: 80,
                 child: Container(
                   width: 20,
                   height: 20,
@@ -191,7 +166,7 @@ class _MypollsState extends State<Polls>{
               ),
               Positioned(
                 left: 53,
-                top: 230,
+                top: 125,
                 child: Container(
                   width: 20,
                   height: 20,
@@ -204,234 +179,55 @@ class _MypollsState extends State<Polls>{
                 ),
               ),
               Positioned(
-                left: 81,
-                top: 275,
-                child: Container(
-                  width: 183,
-                  height: 39,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
-              Positioned(
-                left: 83,
-                top: 275,
-                child: SizedBox(
-                  width: 181,
-                  height: 39,
-                  child: Text(
-                    'Vote',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 53,
-                top: 334,
-                child: Container(
-                  width: 242,
-                  height: 28,
-                  decoration: BoxDecoration(color: Color(0xFFF7F7F7)),
-                ),
-              ),
-              Positioned(
-                left: 54,
-                top: 338,
-                child: SizedBox(
-                  width: 241,
-                  height: 24,
-                  child: Text(
-                    'View Results',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 30,
-                top: 395,
-                child: Container(
-                  width: 284,
-                  height: 255,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 30,
-                top: 431,
-                child: SizedBox(
-                  width: 285,
-                  child: Text(
-                    'Should the city increase funding for public parks?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 11,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 83,
-                top: 469,
-                child: Text(
-                  'Yes',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 11,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 85,
-                top: 507,
-                child: Text(
-                  'No',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 11,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
-                    height: 0,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 52,
-                top: 465,
-                child: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/20x20"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 52,
-                top: 500,
-                child: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/20x20"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 80,
-                top: 545,
-                child: Container(
-                  width: 183,
-                  height: 39,
-                  decoration: BoxDecoration(color: Color(0xFFF93636)),
-                ),
-              ),
-              Positioned(
-                left: 82,
-                top: 545,
-                child: SizedBox(
-                  width: 181,
-                  height: 39,
-                  child: Text(
-                    'Vote',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 52,
-                top: 604,
-                child: Container(
-                  width: 242,
-                  height: 28,
-                  decoration: BoxDecoration(color: Color(0xFFF7F7F7)),
-                ),
-              ),
-              Positioned(
-                left: 53,
-                top: 608,
-                child: SizedBox(
-                  width: 241,
-                  height: 24,
-                  child: Text(
-                    'View Results',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 231,
-                top: 674,
-                child: Container(
-                  width: 80,
-                  height: 80,
-                  decoration: ShapeDecoration(
-                    color: Color(0xFFF93636),
-                    shape: OvalBorder(),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 221,
-                top: 664,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image:
-                          NetworkImage("https://via.placeholder.com/100x100"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
+  left: 81,
+  top: 170,
+  child: Container(
+    width: 183,
+    height: 39,
+    decoration: BoxDecoration(
+      color: Color(0xFFF93636),
+    ),
+    child: Center(
+      child: Text(
+        'Vote',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w400,
+          height: 1.5, // Adjust for spacing if needed
+        ),
+      ),
+    ),
+  ),
+),
+             Positioned(
+  left: 53,
+  top: 229,
+  child: Container(
+    width: 242,
+    height: 28,
+    decoration: BoxDecoration(
+      color: Color(0xFFF7F7F7),
+    ),
+    child: Center(
+      child: Text(
+        'View Results',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 14,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w400,
+          height: 1.5, // Adjusted height for better spacing
+        ),
+      ),
+    ),
+  ),
+)
+
+              
             ],
           ),
         ),
