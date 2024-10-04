@@ -26,7 +26,11 @@ class FigmaToCodeApp extends StatelessWidget {
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Column(
       children: [
         Container(
           width: 360,
@@ -282,6 +286,33 @@ class Profile extends StatelessWidget {
           ),
         ),
       ],
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Petitions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.poll),
+            label: 'Polls',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          // Handle navigation tap
+        },
+      ),
     );
   }
 }

@@ -257,62 +257,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 486,
-                top: 797,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 486,
-                top: 797,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 486,
-                top: 797,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 486,
-                top: 797,
-                child: Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/30x30"),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                ),
-              ),
+              
               Positioned(
                 left: 12,
                 top: 110,
@@ -349,6 +294,32 @@ class Home extends StatelessWidget {
           ),
         ),
       ],
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'Home',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.assignment),
+        label: 'Petitions',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        label: 'Profile',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.poll),
+        label: 'Polls',
+      ),
+      ],
+      currentIndex: 0,
+      selectedItemColor: Colors.red,
+      unselectedItemColor: Colors.grey,
+      onTap: (index) {
+      // Handle navigation tap
+      },
     ),
     );
   }

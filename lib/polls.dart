@@ -26,7 +26,9 @@ class FigmaToCodeApp extends StatelessWidget {
 class Polls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
       children: [
         Container(
           width: 360,
@@ -375,7 +377,8 @@ class Polls extends StatelessWidget {
                   height: 100,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://via.placeholder.com/100x100"),
+                      image:
+                          NetworkImage("https://via.placeholder.com/100x100"),
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -385,6 +388,33 @@ class Polls extends StatelessWidget {
           ),
         ),
       ],
+    ),
+    bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Petitions',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.poll),
+            label: 'Polls',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          // Handle navigation tap
+        },
+      ),
     );
   }
 }
