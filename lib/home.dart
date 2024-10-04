@@ -26,7 +26,24 @@ class FigmaToCodeApp extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Engagement',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
+      ),
+      body: Column(
       children: [
         Container(
           width: 360,
@@ -112,25 +129,7 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 3,
-                top: 15,
-                child: SizedBox(
-                  width: 223,
-                  height: 53,
-                  child: Text(
-                    'Engagement',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
+              
               Positioned(
                 left: 38,
                 top: 789,
@@ -350,6 +349,7 @@ class Home extends StatelessWidget {
           ),
         ),
       ],
+    ),
     );
   }
 }
