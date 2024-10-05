@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:social_justice_hackathon/mongo_db.dart';
 import 'package:social_justice_hackathon/signup.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await MongoDatabase.connect();
+
   runApp(const FigmaToCodeApp());
 }
 
@@ -36,7 +37,7 @@ class Splash extends StatelessWidget {
           width: 380,
           height: 800,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Stack(
             children: [
               Positioned(
@@ -46,7 +47,7 @@ class Splash extends StatelessWidget {
                   width: 297,
                   height: 76,
                   decoration: ShapeDecoration(
-                    color: Color(0xFFD9D9D9),
+                    color: const Color(0xFFD9D9D9),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -60,7 +61,7 @@ class Splash extends StatelessWidget {
                   width: 209,
                   height: 214,
                   decoration: ShapeDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: NetworkImage("https://via.placeholder.com/209x214"),
                       fit: BoxFit.fill,
                     ),
@@ -70,7 +71,7 @@ class Splash extends StatelessWidget {
                   ),
                 ),
               ),
-                Positioned(
+              Positioned(
                 left: 57,
                 top: 654,
                 child: GestureDetector(
@@ -84,12 +85,12 @@ class Splash extends StatelessWidget {
                   width: 246,
                   height: 53,
                   decoration: ShapeDecoration(
-                    color: Color(0xFFF93636),
+                    color: const Color(0xFFF93636),
                     shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                     'Get Started',
                     textAlign: TextAlign.center,
@@ -104,8 +105,8 @@ class Splash extends StatelessWidget {
                   ),
                   ),
                 ),
-                ),
-              Positioned(
+              ),
+              const Positioned(
                 left: 39,
                 top: 71,
                 child: SizedBox(
@@ -124,7 +125,7 @@ class Splash extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
+              const Positioned(
                 left: 52,
                 top: 191,
                 child: SizedBox(
